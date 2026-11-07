@@ -14,11 +14,11 @@
 
     <div class="grid grid-4">
         <div class="stat-card">
-            <h3>5</h3>
+            <h3>{{ $customerCount }}</h3>
             <p>Customers</p>
         </div>
         <div class="stat-card">
-            <h3>5</h3>
+            <h3>{{ $userCount }}</h3>
             <p>Users</p>
         </div>
         <div class="stat-card">
@@ -33,7 +33,7 @@
 
     <div class="card" style="margin-top: 2rem;">
         <h2>Quick Overview</h2>
-        <p>This Laravel rebuild demonstrates a clean MVC structure with controllers, Blade views, and static sample data for customers and users.</p>
+        <p>This Laravel rebuild uses a real SQLite database with Eloquent models, migrations, and seeders.</p>
         <p>Use the navigation above to explore the Customer Accounts and User Accounts pages.</p>
     </div>
 @endsection
