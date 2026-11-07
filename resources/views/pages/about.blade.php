@@ -41,11 +41,11 @@
             </div>
             <div class="timeline-item">
                 <h3>2026 - Modern Redesign</h3>
-                <p>Complete UI/UX overhaul with modern design, responsive layout, and enhanced user experience.</p>
+                <p>Complete UI/UX overhaul with modern design, responsive layout, dark mode, and enhanced user experience.</p>
             </div>
             <div class="timeline-item">
                 <h3>Future - Expansion</h3>
-                <p>Planning to add inventory management, sales reporting, and multi-store support.</p>
+                <p>Planning to add inventory management, sales reporting, multi-store support, and mobile app.</p>
             </div>
         </div>
     </div>
@@ -55,17 +55,28 @@
             <h2>Technology Stack</h2>
             <p><strong>Backend:</strong> Laravel 12, PHP 8.2, Eloquent ORM</p>
             <p><strong>Database:</strong> SQLite (development), MySQL/PostgreSQL ready</p>
-            <p><strong>Frontend:</strong> Blade Templates, Custom CSS, Responsive Design</p>
-            <p><strong>Tools:</strong> Composer, Artisan, Git, GitHub</p>
+            <p><strong>Frontend:</strong> Blade Templates, Custom CSS, Vanilla JS, Responsive Design</p>
+            <p><strong>Tools:</strong> Composer, Artisan, Git, GitHub, Cloudflare Tunnel</p>
         </div>
         <div class="card">
             <h2>Key Features</h2>
             <p>✅ Customer account management with full CRUD operations</p>
             <p>✅ User management with role-based access</p>
-            <p>✅ Modern, responsive UI design</p>
+            <p>✅ Modern, responsive UI with dark mode</p>
             <p>✅ Real-time database integration</p>
             <p>✅ Mobile-friendly interface</p>
             <p>✅ Scalable architecture</p>
+            <p>✅ Dashboard with analytics</p>
+            <p>✅ Search and filter functionality</p>
+        </div>
+    </div>
+
+    <div class="cta-section" style="margin-top: 2rem;">
+        <h2>Join Our Community</h2>
+        <p>Stay updated with the latest features and improvements to TANJ POS.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ route('home') }}" class="btn" style="background: #fff; color: var(--primary); box-shadow: none;">Back to Home</a>
+            <a href="{{ route('customers') }}" class="btn btn-secondary">View Customers</a>
         </div>
     </div>
 @endsection

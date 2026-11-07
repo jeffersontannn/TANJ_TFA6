@@ -3,7 +3,7 @@
 @section('title', 'Home - TANJ POS')
 
 @section('content')
-    <div class="hero">
+    <div class="hero slide-up">
         <h1>Welcome to TANJ Point of Sale</h1>
         <p>A modern, powerful POS system built with Laravel to streamline your retail operations, manage customers, and track sales efficiently.</p>
         <div class="hero-actions">
@@ -13,7 +13,68 @@
         </div>
     </div>
 
-    <div class="grid grid-4">
+    <div class="dashboard-grid">
+        <div class="dashboard-card">
+            <h3>Sales Overview</h3>
+            <div class="chart-placeholder">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📈</div>
+                    <div>Sales Chart</div>
+                    <div style="font-size: 0.8rem; margin-top: 0.5rem;">Last 7 days: ₱12,450</div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <h3>Recent Activity</h3>
+            <div class="activity-item">
+                <div class="activity-icon">👤</div>
+                <div class="activity-content">
+                    <strong>New customer registered</strong>
+                    <span>John Doe added to database</span>
+                </div>
+                <div class="activity-time">2m ago</div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-icon">💰</div>
+                <div class="activity-content">
+                    <strong>Sale completed</strong>
+                    <span>₱1,250 - 3 items</span>
+                </div>
+                <div class="activity-time">15m ago</div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-icon">📦</div>
+                <div class="activity-content">
+                    <strong>Low stock alert</strong>
+                    <span>Item #42 - Only 5 left</span>
+                </div>
+                <div class="activity-time">1h ago</div>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <h3>Quick Stats</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div style="text-align: center; padding: 1rem; background: rgba(79, 70, 229, 0.1); border-radius: 8px;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">{{ $customerCount }}</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Customers</div>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: rgba(245, 158, 11, 0.1); border-radius: 8px;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--secondary);">{{ $userCount }}</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Users</div>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--success);">₱45k</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Revenue</div>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: rgba(14, 165, 233, 0.1); border-radius: 8px;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--info);">128</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Orders</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-4" style="margin-bottom: 2rem;">
         <div class="stat-card">
             <div class="stat-card-icon">👥</div>
             <h3>{{ $customerCount }}</h3>

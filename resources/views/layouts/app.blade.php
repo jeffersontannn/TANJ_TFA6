@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,21 @@
             --radius: 12px;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --bg-body: var(--light);
+            --bg-card: #ffffff;
+            --bg-nav: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            --text-primary: var(--dark);
+            --text-secondary: var(--muted);
+            --border-color: var(--border);
+        }
+        [data-theme="dark"] {
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --light: #1e293b;
+            --muted: #94a3b8;
         }
         * {
             margin: 0;
@@ -33,13 +48,14 @@
         }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--bg-body);
+            color: var(--text-primary);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         nav {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            background: var(--bg-nav);
             padding: 0 2rem;
             position: sticky;
             top: 0;
@@ -101,6 +117,82 @@
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
         }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(15deg);
+        }
+        .notification-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .notification-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--danger);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--dark);
+        }
+        .profile-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .profile-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -118,35 +210,35 @@
         }
         h1 {
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            color: var(--text-primary);
             font-size: 2.25rem;
             font-weight: 800;
             letter-spacing: -0.5px;
         }
         h2 {
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: var(--text-primary);
             font-size: 1.5rem;
             font-weight: 700;
         }
         h3 {
             margin-bottom: 0.5rem;
-            color: var(--dark);
+            color: var(--text-primary);
             font-size: 1.125rem;
             font-weight: 600;
         }
         p {
             margin-bottom: 1rem;
-            color: var(--muted);
+            color: var(--text-secondary);
             line-height: 1.7;
         }
         .card {
-            background-color: #fff;
+            background-color: var(--bg-card);
             border-radius: var(--radius);
             padding: 1.75rem;
             box-shadow: var(--shadow);
             margin-bottom: 1.5rem;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
@@ -241,16 +333,16 @@
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
-            background-color: #fff;
+            background-color: var(--bg-card);
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-color);
         }
         th, td {
             padding: 1rem 1.25rem;
             text-align: left;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-color);
         }
         th {
             background: linear-gradient(135deg, var(--dark), var(--dark-light));
@@ -267,7 +359,7 @@
             transition: background-color 0.2s ease;
         }
         tbody tr:hover {
-            background-color: #f8fafc;
+            background-color: rgba(79, 70, 229, 0.05);
         }
         .badge {
             display: inline-flex;
@@ -285,10 +377,6 @@
         .badge-inactive {
             background-color: #fee2e2;
             color: #991b1b;
-        }
-        .badge-role {
-            background-color: #dbeafe;
-            color: #1e40af;
         }
         .badge-admin {
             background: linear-gradient(135deg, #fef3c7, #fde68a);
@@ -367,21 +455,25 @@
             flex: 1;
             min-width: 250px;
             padding: 0.75rem 1rem;
-            border: 2px solid var(--border);
+            border: 2px solid var(--border-color);
             border-radius: 8px;
             font-size: 1rem;
-            transition: border-color 0.2s ease;
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
         .search-input:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
         .filter-select {
             padding: 0.75rem 1rem;
-            border: 2px solid var(--border);
+            border: 2px solid var(--border-color);
             border-radius: 8px;
             font-size: 1rem;
-            background-color: #fff;
+            background-color: var(--bg-card);
+            color: var(--text-primary);
             cursor: pointer;
         }
         .hero {
@@ -440,12 +532,12 @@
             margin-top: 2rem;
         }
         .feature-card {
-            background: #fff;
+            background: var(--bg-card);
             border-radius: var(--radius);
             padding: 2rem;
             text-align: center;
             box-shadow: var(--shadow);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
         .feature-card:hover {
@@ -491,6 +583,75 @@
         .cta-section p {
             color: rgba(255,255,255,0.9);
             margin-bottom: 1.5rem;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .dashboard-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        .dashboard-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .chart-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(99, 102, 241, 0.05));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        .activity-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+        .activity-content {
+            flex: 1;
+        }
+        .activity-content strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+        .activity-content span {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .activity-time {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
         }
         footer {
             background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
@@ -560,7 +721,7 @@
             height: 12px;
             border-radius: 50%;
             background: var(--primary);
-            border: 3px solid #fff;
+            border: 3px solid var(--bg-card);
             box-shadow: var(--shadow);
         }
         .timeline-item h3 {
@@ -568,8 +729,22 @@
             margin-bottom: 0.25rem;
         }
         .timeline-item p {
-            color: var(--muted);
+            color: var(--text-secondary);
             margin: 0;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 768px) {
             .mobile-menu-btn {
@@ -581,13 +756,16 @@
                 top: 72px;
                 left: 0;
                 right: 0;
-                background: var(--dark);
+                background: var(--bg-nav);
                 flex-direction: column;
                 padding: 1rem;
                 gap: 0.5rem;
             }
             nav ul.active {
                 display: flex;
+            }
+            .nav-actions {
+                display: none;
             }
             .hero {
                 padding: 3rem 1.5rem;
@@ -604,6 +782,9 @@
             .search-input,
             .filter-select {
                 width: 100%;
+            }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -622,6 +803,14 @@
                 <li><a href="{{ route('customers') }}" class="{{ request()->routeIs('customers') ? 'active' : '' }}">Customers</a></li>
                 <li><a href="{{ route('users') }}" class="{{ request()->routeIs('users') ? 'active' : '' }}">Users</a></li>
             </ul>
+            <div class="nav-actions">
+                <button class="notification-btn" onclick="showNotifications()">
+                    🔔
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle">🌙</button>
+                <button class="profile-btn" onclick="showProfile()">A</button>
+            </div>
         </div>
     </nav>
     <main>
@@ -659,10 +848,44 @@
         </div>
     </footer>
     <script>
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            document.getElementById('theme-toggle').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.getElementById('theme-toggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        });
+
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('active');
         }
+
+        function showNotifications() {
+            alert('You have 3 new notifications:\n\n1. New customer registered\n2. Low stock alert for Item #42\n3. Daily sales report ready');
+        }
+
+        function showProfile() {
+            alert('Profile Settings\n\nUsername: admin\nRole: Administrator\nStatus: Active');
+        }
+
+        // Add fade-in animation to cards on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card, .stat-card, .feature-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.animation = `fadeIn 0.5s ease-in ${index * 0.1}s forwards`;
+            });
+        });
     </script>
 </body>
 </html>
